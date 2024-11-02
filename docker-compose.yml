@@ -19,6 +19,7 @@ services:
   rundeck:
     image: rundeck/rundeck:5.7.0
     container_name: rundeck
+    hostname: rundeck.example.local
     pull_policy: always
     restart: unless-stopped
     environment:
@@ -26,11 +27,11 @@ services:
       RUNDECK_DATABASE_USERNAME: rundeck
       RUNDECK_DATABASE_PASSWORD: changeme
       RUNDECK_DATABASE_URL: jdbc:postgresql://postgres/rundeck?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true
-      RUNDECK_GRAILS_URL: https://localhost:4443
+      RUNDECK_GRAILS_URL: https://rundeck.example.local:4443
       RUNDECK_WITH_SSL: "true"
       RUNDECK_ADMIN_PASSWORD: "admin"
     healthcheck:
-      test: "curl -f https://localhost:4443"
+      test: "curl -f https://rundeck.example.local:4443"
       interval: 5s
       timeout: 10s
       retries: 50
