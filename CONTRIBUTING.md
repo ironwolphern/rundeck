@@ -1,4 +1,4 @@
-# Contributing to the ansible-role-pve-vm
+# Contributing to the Rundeck docker compose
 
 Testers welcome!
 
